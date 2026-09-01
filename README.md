@@ -1,4 +1,4 @@
-# CA11 – Fitness Studio Booking App
+Fitness Studio Booking App
 
 A Flask web application for a fitness studio, allowing users to browse and sign up
 for classes, and giving admins a dashboard to manage classes and view sign-ups.
