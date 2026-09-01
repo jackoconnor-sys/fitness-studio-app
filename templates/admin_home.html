@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h2>Admin Home</h2>
+
+<h3>Available Classes</h3>
+<a href="{{ url_for('add_class') }}" class="btn-add-class">Add Class</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Duration</th>
+            <th>Trainer</th>
+            <th>Description</th>
+        </tr>
+        {% for class in classes %}
+        <tr>
+            <td>{{ class["name"] }}</td>
+            <td>{{ class["day"] }}</td>
+            <td>{{ class["time"] }}</td>
+            <td>{{ class["duration"] }}</td>
+            <td>{{ class["trainer"] }}</td>
+            <td>{{ class["description"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<h3>Free Trial Signups</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Preferred Class</th>
+        </tr>
+        {% for signup in free_trials %}
+        <tr>
+            <td>{{ signup["name"] }}</td>
+            <td>{{ signup["email"] }}</td>
+            <td>{{ signup["phone"] }}</td>
+            <td>{{ signup["preferred_class"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<h3>Registered Users</h3>
+    <table>
+        <tr>
+            <th>Username</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user["user_id"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

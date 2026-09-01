@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Gym Classes</h1>
+    <p> Book into a class!!</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Duration</th>
+            <th>Trainer</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        {% for class in classes %}
+        <tr>
+            <td>{{ class["name"] }}</td> 
+            <td>{{ class["day"] }}</td>
+            <td>{{ class["time"] }}</td>
+            <td>{{ class["duration"] }}</td>
+            <td>{{ class["trainer"] }}</td>
+            <td>{{ class["description"] }}</td>
+            <td>
+                <a href="{{ url_for('add_to_sign_ups', class_id=class['class_id']) }}">Sign up</a>
+            </td>
+            <td>
+                <a href="{{ url_for('signup_class', class_id=class['class_id']) }}">Sign up a different user</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

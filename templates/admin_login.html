@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1></h1>
+
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        
+        {{ form.admin_id.label }}
+        {{ form.admin_id() }}
+        {% for error in form.admin_id.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        
+        {{ form.special_admin_code.label }}
+        {{ form.special_admin_code() }}
+        {% for error in form.special_admin_code.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        
+        {{ form.submit() }}
+    </form>
+
+    <p>
+        <a href="{{ url_for('admin_register') }}">Register as Admin</a>
+    </p>
+
+{% endblock %}

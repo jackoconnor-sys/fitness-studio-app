@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>Add New Class</h2>
+
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label }}
+        {{ form.name() }}
+        {% for error in form.name.errors %}
+           {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.day.label }}
+        {{ form.day() }}
+        {% for error in form.day.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.time.label }}
+        {{ form.time() }}
+        {% for error in form.time.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.duration.label }}<br>
+        {{ form.duration() }}
+        {% for error in form.duration.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.trainer.label }}
+        {{ form.trainer() }}
+        {% for error in form.trainer.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.description.label }}
+        {{ form.description() }}
+        {% for error in form.description.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.submit() }}
+    </form>
+
+    {% if message %}
+        {{ message }}
+    {% endif %}
+
+{% endblock %}

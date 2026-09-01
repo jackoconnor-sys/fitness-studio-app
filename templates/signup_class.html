@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h2>Available Classes</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Time</th>
+        </tr>
+        {% for class in classes %}
+        <tr>
+            <td>{{ class.name }}</td>
+            <td>{{ class.day }}</td>
+            <td>{{ class.time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Sign Up a User for a Class</h2>
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        
+        {{ form.user_id.label }} <br />
+        {{ form.user_id() }} <br />
+        {% for error in form.user_id.errors %}
+            {{ error }}
+        {% endfor %}
+        
+        {{ form.class_name.label }} <br />
+        {{ form.class_name() }} <br />
+        {% for error in form.class_name.errors %}
+            {{ error }}
+        {% endfor %}
+        
+        <br />
+        {{ form.submit() }}
+    </form>
+    
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+{% endblock %}

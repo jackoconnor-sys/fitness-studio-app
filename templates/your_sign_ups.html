@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Your Sign-Ups</h1>
+
+    {% if class_details %}
+        <table>
+            <tr>
+                <th>Class ID</th>
+                <th>Class Name</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Sign-ups</th>
+            </tr>
+            {% for class_id, details in class_details.items() %}
+            <tr>
+                <td>{{ class_id }}</td> 
+                <td>{{ details.name }}</td>  
+                <td>{{ details.day }}</td>  
+                <td>{{ details.time }}</td>  
+                <td>{{ details.signups }}</td>  
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You haven't signed up for anything yet!</p>
+    {% endif %}
+
+{% endblock %}

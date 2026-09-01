@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h2>Available Classes</h2>
+
+<p> Test out a class!!</p>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Duration</th>
+        <th>Trainer</th>
+        <th>Description</th>
+    </tr>
+    {% for class in classes %}
+        <tr>
+            <td>{{ class['name'] }}</td>
+            <td>{{ class['day'] }}</td>
+            <td>{{ class['time'] }}</td>
+            <td>{{ class['duration'] }}</td>
+            <td>{{ class['trainer'] }}</td>
+            <td>{{ class['description'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h2>Sign Up for a Free Trial</h2>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <br />
+    {{ form.name.label }} 
+    {{ form.name() }} 
+    <br />
+    {{ form.email.label }} 
+    {{ form.email() }} 
+    <br />
+    {{ form.phone.label }} 
+    {{ form.phone() }} 
+
+    <h3>Enter Your Preferred Class:</h3>
+    {{ form.preferred_class.label }} 
+    {{ form.preferred_class() }}  
+    <br />
+    {% for error in form.preferred_class.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+
+    {{ form.submit() }}
+</form>
+
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NGF - Next Generation Fitness</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body> 
+        <header>
+            <h1>NGF - Next Generation Fitness</h1>
+        </header>
+
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('free_trial') }}">Free Trial</a>
+            <a href="{{ url_for('classes') }}">Our Classes</a>
+        </nav>
+
+        {% if g.user %}
+            <p>UserID: {{ g.user }}</p>
+            <p><a href="{{ url_for('logout') }}">Logout</a></p>
+        {% else %}
+            <p><a href="{{ url_for('register') }}">Register</a></p>
+            <p><a href="{{ url_for('login') }}">Login</a></p>
+        {% endif %}
+
+        <main>
+            {% block main_content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            <p>All rights reserved.</p>
+        </footer>
+    </body>
+</html>
